@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-const MyReviewsTable = ({ reviews, handleDelete, handleEdit }) => {
+const MyReviewsTable = ({ reviews, handleDelete }) => {
   return (
     <div className="p-4 md:p-8">
       <h2 className="text-2xl font-semibold text-center mb-6">
@@ -41,17 +42,17 @@ const MyReviewsTable = ({ reviews, handleDelete, handleEdit }) => {
                     </p>
                   </Td>
                   <Td className="p-3 text-gray-600">
-                    {new Date(review.postedDate).toLocaleDateString()}
+                    {new Date(review.createAt).toLocaleDateString()}
                   </Td>
                   <Td className="p-3 flex gap-2 justify-center">
-                    <button
-                      onClick={() => handleEdit(review)}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm">
+                    <Link
+                      to={`/edit-review/${review._id}`}
+                      className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm">
                       Edit
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(review._id)}
-                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm">
+                      className="cursor-pointer bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm">
                       Delete
                     </button>
                   </Td>

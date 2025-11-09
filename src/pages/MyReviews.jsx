@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 import { use } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -27,7 +26,7 @@ const MyReviews = () => {
           .then(() => {
             Swal.fire({
               title: "Deleted!",
-              text: "Your file has been deleted.",
+              text: "Your review has been deleted.",
               icon: "success",
             });
             setMyReviews(myReviews.filter((r) => r._id !== id));
@@ -37,12 +36,6 @@ const MyReviews = () => {
           });
       }
     });
-  };
-
-  const handleEdit = (review) => {
-    console.log("Editing:", review);
-
-    // navigate(`/edit-review/${review._id}`) // example route
   };
 
   useEffect(() => {
@@ -59,11 +52,7 @@ const MyReviews = () => {
   //   console.log(myReviews);
   return (
     <div>
-      <MyReviewsTable
-        reviews={myReviews}
-        handleDelete={handleDelete}
-        handleEdit={handleEdit}
-      />
+      <MyReviewsTable reviews={myReviews} handleDelete={handleDelete} />
     </div>
   );
 };

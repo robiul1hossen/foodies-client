@@ -12,6 +12,7 @@ import AllReviews from "./pages/AllReviews.jsx";
 import ReviewDetails from "./pages/ReviewDetails.jsx";
 import AddReview from "./pages/AddReview.jsx";
 import MyReviews from "./pages/MyReviews.jsx";
+import EditReview from "./pages/EditReview.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/my-reviews",
         Component: MyReviews,
+      },
+      {
+        path: "/edit-review/:id",
+        Component: EditReview,
       },
       {
         path: "/login",

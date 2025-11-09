@@ -3,9 +3,14 @@ import { use } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
+import { useParams } from "react-router";
+import { useEffect } from "react";
+import { useState } from "react";
 
-const AddReview = () => {
+const EditReview = () => {
+  const { id } = useParams();
   const { user } = use(AuthContext);
+  const [review, setReview] = useState({});
   const {
     register,
     handleSubmit,
@@ -18,21 +23,32 @@ const AddReview = () => {
     data.createAt = date;
     // console.log("Submitted Review:", data);
     axios
-      .post(`http://localhost:3000/add-review`, data)
+      .patch(`http://localhost:3000/my-review/${id}`, data)
       .then((res) => {
         console.log(res);
-        alert("review added");
+        alert("review updated");
       })
       .catch((error) => {
         console.log(error);
       });
     reset();
   };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/my-review/${id}`)
+      .then((res) => {
+        setReview(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
+  //   console.log(review);
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-10">
       <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-        Add a Review
+        Edit Your Review
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -40,6 +56,7 @@ const AddReview = () => {
         <div>
           <label className="block mb-1 font-medium">Food Photo URL</label>
           <input
+            defaultValue={review.photo}
             type="text"
             {...register("photo", { required: true })}
             className="input input-bordered w-full"
@@ -53,6 +70,7 @@ const AddReview = () => {
         <div>
           <label className="block mb-1 font-medium">Food Name</label>
           <input
+            defaultValue={review.foodName}
             type="text"
             {...register("foodName", { required: true })}
             className="input input-bordered w-full"
@@ -66,6 +84,7 @@ const AddReview = () => {
         <div>
           <label className="block mb-1 font-medium">Restaurant Name</label>
           <input
+            defaultValue={review.restaurantName}
             type="text"
             {...register("restaurantName", { required: true })}
             className="input input-bordered w-full"
@@ -79,6 +98,7 @@ const AddReview = () => {
         <div>
           <label className="block mb-1 font-medium">Restaurant Location</label>
           <input
+            defaultValue={review.restaurantLocation}
             type="text"
             {...register("restaurantLocation", { required: true })}
             className="input input-bordered w-full"
@@ -92,7 +112,7 @@ const AddReview = () => {
         <div>
           <label className="block mb-1 font-medium">Reviewer Name</label>
           <input
-            defaultValue={user.displayName}
+            defaultValue={user?.displayName}
             readOnly
             type="text"
             {...register("reviewerName", { required: true })}
@@ -107,7 +127,7 @@ const AddReview = () => {
         <div>
           <label className="block mb-1 font-medium">Reviewer Email</label>
           <input
-            defaultValue={user.email}
+            defaultValue={user?.email}
             readOnly
             type="email"
             {...register("reviewerEmail", { required: true })}
@@ -122,6 +142,7 @@ const AddReview = () => {
         <div>
           <label className="block mb-1 font-medium">Rating (0 - 5)</label>
           <input
+            defaultValue={review.rating}
             type="number"
             step="0.1"
             min="0"
@@ -138,6 +159,7 @@ const AddReview = () => {
         <div>
           <label className="block mb-1 font-medium">Review</label>
           <textarea
+            defaultValue={review.review}
             {...register("review", { required: true })}
             className="textarea textarea-bordered w-full h-32"></textarea>
           {errors.review && (
@@ -154,7 +176,7 @@ const AddReview = () => {
 
           {/* text */}
           <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-            Submit Review
+            Update Review
           </span>
         </button>
       </form>
@@ -162,4 +184,4 @@ const AddReview = () => {
   );
 };
 
-export default AddReview;
+export default EditReview;
