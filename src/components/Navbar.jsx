@@ -65,25 +65,22 @@ const Navbar = () => {
             <button onClick={handleLogout} className="btn">
               Logout
             </button> */}
-            <div className="relative group">
+            <div className="user-menu">
               {/* User Avatar */}
               <img
-                className="w-10 h-10 rounded-full cursor-pointer"
+                className="avatar"
+                referrerPolicy="no-referrer"
                 src={user.photoURL}
                 alt="User Avatar"
               />
 
-              {/* Hover Dropdown */}
-              <div className="absolute right-0 mt-2 hidden group-hover:flex flex-col bg-white shadow-lg rounded-lg p-2 w-40 border">
-                <button className="btn btn-sm btn-ghost justify-start">
-                  Add Review
-                </button>
-                <button className="btn btn-sm btn-ghost justify-start">
-                  My Reviews
-                </button>
-                <button
-                  onClick={handleLogout}
-                  className="btn btn-sm btn-ghost justify-start text-red-500">
+              {/* Dropdown */}
+              <div className="dropdown">
+                <button className="btn">{user.displayName}</button>
+                <button className="btn">{user.email}</button>
+                <button className="btn">Add Review</button>
+                <button className="btn">My Reviews</button>
+                <button className="btn logout" onClick={handleLogout}>
                   Logout
                 </button>
               </div>
