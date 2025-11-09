@@ -10,6 +10,7 @@ import Register from "./pages/Register.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
 import AllReviews from "./pages/AllReviews.jsx";
 import ReviewDetails from "./pages/ReviewDetails.jsx";
+import AddReview from "./pages/AddReview.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/review-details/:id",
         Component: ReviewDetails,
+      },
+      {
+        path: "/add-review",
+        Component: AddReview,
       },
       {
         path: "/login",

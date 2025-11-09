@@ -11,7 +11,7 @@ const ReviewCard = ({ review }) => {
     rating,
   } = review;
   const handleDetails = () => {};
-  console.log(review);
+  // console.log(review);
   return (
     <div className="max-w-sm bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
       {/* Food Image */}
