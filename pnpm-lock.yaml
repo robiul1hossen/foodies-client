@@ -35,6 +35,9 @@ importers:
       react-router:
         specifier: ^7.9.5
         version: 7.9.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react-super-responsive-table:
+        specifier: ^6.0.2
+        version: 6.0.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       tailwindcss:
         specifier: ^4.1.17
         version: 4.1.17
@@ -1464,6 +1467,13 @@ packages:
     peerDependenciesMeta:
       react-dom:
         optional: true
+
+  react-super-responsive-table@6.0.2:
+    resolution: {integrity: sha512-Y9+0Xf9j9VhcHO2sluIXA1fKxIQqYUYMeGsLcG1SXTAVUMEhY7zJIFclTlTzZDUyZYat+e1scPDIs8MXoOwgdw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
 
   react@19.2.0:
     resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
@@ -3028,6 +3038,11 @@ snapshots:
       react: 19.2.0
       set-cookie-parser: 2.7.2
     optionalDependencies:
+      react-dom: 19.2.0(react@19.2.0)
+
+  react-super-responsive-table@6.0.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+    dependencies:
+      react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
   react@19.2.0: {}

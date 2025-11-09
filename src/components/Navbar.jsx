@@ -1,14 +1,29 @@
 import { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { useState } from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const { logoutUser, user } = use(AuthContext);
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef();
   const handleLogout = () => {
     logoutUser()
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const links = (
     <>
@@ -21,7 +36,7 @@ const Navbar = () => {
       <NavLink className="font-semibold ml-6" to="/add-review">
         Add Review
       </NavLink>
-      <NavLink className="font-semibold ml-6" to="/my-review">
+      <NavLink className="font-semibold ml-6" to="/my-reviews">
         My Review
       </NavLink>
     </>
@@ -60,25 +75,36 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <>
-            <div className="user-menu">
+            <div className="relative" ref={menuRef}>
               {/* User Avatar */}
               <img
-                className="avatar"
+                className="w-10 h-10 rounded-full cursor-pointer border-2 border-gray-300 hover:border-blue-500 transition"
                 referrerPolicy="no-referrer"
                 src={user.photoURL}
                 alt="User Avatar"
+                onClick={() => setOpen(!open)}
               />
 
-              {/* Dropdown */}
-              <div className="dropdown">
-                <button className="btn">{user.displayName}</button>
-                <button className="btn">{user.email}</button>
-                <button className="btn">Add Review</button>
-                <button className="btn">My Reviews</button>
-                <button className="btn logout" onClick={handleLogout}>
-                  Logout
-                </button>
-              </div>
+              {/* Dropdown Menu */}
+              {open && (
+                <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg border w-48 flex flex-col p-2 z-50 animate-fadeIn">
+                  <Link
+                    to="/add-review"
+                    className="btn btn-sm btn-ghost justify-start text-left">
+                    Add Review
+                  </Link>
+                  <Link
+                    to="my-reviews"
+                    className="btn btn-sm btn-ghost justify-start text-left">
+                    My Reviews
+                  </Link>
+                  <button
+                    className="btn btn-sm btn-ghost justify-start text-left text-red-500"
+                    onClick={handleLogout}>
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
             <button onClick={handleLogout} className="btn">
               Logout

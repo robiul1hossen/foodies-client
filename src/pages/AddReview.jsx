@@ -24,7 +24,7 @@ const AddReview = () => {
       .catch((error) => {
         console.log(error);
       });
-    // reset();
+    reset();
   };
 
   return (
