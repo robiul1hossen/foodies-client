@@ -1,14 +1,14 @@
 import axios from "axios";
 import React from "react";
-import { useState } from "react";
 import { useEffect } from "react";
-import ReviewCard from "./ReviewCard";
+import { useState } from "react";
+import ReviewCard from "../components/ReviewCard";
 
-const TopRatedReview = () => {
+const AllReviews = () => {
   const [topReview, setTopReview] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/top-rated-reviews`)
+      .get(`http://localhost:3000/all-reviews`)
       .then((res) => {
         setTopReview(res.data);
       })
@@ -16,9 +16,8 @@ const TopRatedReview = () => {
         console.log(error);
       });
   }, []);
-  //   console.log(topReview);
   return (
-    <div>
+    <div className="max-w-6xl mx-auto">
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {topReview.map((review) => (
           <ReviewCard key={review._id} review={review} />
@@ -28,4 +27,4 @@ const TopRatedReview = () => {
   );
 };
 
-export default TopRatedReview;
+export default AllReviews;

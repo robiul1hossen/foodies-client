@@ -8,6 +8,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
+import AllReviews from "./pages/AllReviews.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
         index: true,
         path: "/",
         Component: Home,
+      },
+      {
+        path: "/all-reviews",
+        Component: AllReviews,
       },
       {
         path: "/login",

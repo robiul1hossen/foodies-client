@@ -12,13 +12,16 @@ const Navbar = () => {
 
   const links = (
     <>
-      <NavLink className="font-semibold ml-2" to="/">
+      <NavLink className="font-semibold ml-6" to="/">
         Home
       </NavLink>
-      <NavLink className="font-semibold ml-2" to="/add-review">
+      <NavLink className="font-semibold ml-6" to="/all-reviews">
+        All Review
+      </NavLink>
+      <NavLink className="font-semibold ml-6" to="/add-review">
         Add Review
       </NavLink>
-      <NavLink className="font-semibold ml-2" to="/my-review">
+      <NavLink className="font-semibold ml-6" to="/my-review">
         My Review
       </NavLink>
     </>

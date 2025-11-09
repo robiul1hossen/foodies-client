@@ -22,7 +22,7 @@ const ReviewCard = ({ review }) => {
       {/* Content */}
       <div className="p-4">
         {/* Food name */}
-        <h2 className="text-xl font-semibold text-gray-800 mb-2">{foodName}</h2>
+        <h2 className="text-lg font-semibold text-gray-800 mb-2">{foodName}</h2>
 
         {/* Restaurant info */}
         <p className="text-gray-600 text-sm">
@@ -47,8 +47,16 @@ const ReviewCard = ({ review }) => {
         </div>
 
         {/* View Details Button */}
-        <button className="btn btn-outline w-full mt-4 hover:bg-black hover:text-white">
-          View Details
+        <button
+          type="submit"
+          className="cursor-pointer w-full relative overflow-hidden px-5 py-2 mt-3 bg-white text-black border border-black rounded-lg font-semibold group transition-all duration-300">
+          {/* background overlay */}
+          <span className="absolute inset-0 bg-black scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out"></span>
+
+          {/* text */}
+          <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+            View Details
+          </span>
         </button>
       </div>
     </div>
