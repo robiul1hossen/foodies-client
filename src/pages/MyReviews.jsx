@@ -5,26 +5,38 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import MyReviewsTable from "./MyReviewsTable";
+import Swal from "sweetalert2";
 
 const MyReviews = () => {
   const { user } = use(AuthContext);
   const [myReviews, setMyReviews] = useState([]);
 
   const handleDelete = (id) => {
-    // fetch(`http://localhost:3000/my-reviews/${id}`, { method: "DELETE" })
-    //   .then((res) => res.json())
-    //   .then(() => {
-    //     setMyReviews(myReviews.filter((r) => r._id !== id));
-    //   });
-    axios
-      .delete(`http://localhost:3000/my-reviews/${id}`)
-      .then(() => {
-        alert("delete successful");
-        setMyReviews(myReviews.filter((r) => r._id !== id));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:3000/my-review/${id}`)
+          .then(() => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+            setMyReviews(myReviews.filter((r) => r._id !== id));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
   };
 
   const handleEdit = (review) => {
@@ -44,7 +56,7 @@ const MyReviews = () => {
       });
   }, [user]);
 
-  console.log(myReviews);
+  //   console.log(myReviews);
   return (
     <div>
       <MyReviewsTable
