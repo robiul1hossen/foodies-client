@@ -1,7 +1,8 @@
-import React from "react";
+import { Link } from "react-router";
 
 const ReviewCard = ({ review }) => {
   const {
+    _id,
     photo,
     foodName,
     restaurantLocation,
@@ -9,6 +10,7 @@ const ReviewCard = ({ review }) => {
     reviewerName,
     rating,
   } = review;
+  const handleDetails = () => {};
   console.log(review);
   return (
     <div className="max-w-sm bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
@@ -47,17 +49,19 @@ const ReviewCard = ({ review }) => {
         </div>
 
         {/* View Details Button */}
-        <button
-          type="submit"
-          className="cursor-pointer w-full relative overflow-hidden px-5 py-2 mt-3 bg-white text-black border border-black rounded-lg font-semibold group transition-all duration-300">
-          {/* background overlay */}
-          <span className="absolute inset-0 bg-black scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out"></span>
+        <Link to={`/review-details/${_id}`}>
+          <button
+            onClick={handleDetails}
+            className="cursor-pointer w-full relative overflow-hidden px-5 py-2 mt-3 bg-white text-black border border-black rounded-lg font-semibold group transition-all duration-300">
+            {/* background overlay */}
+            <span className="absolute inset-0 bg-black scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out"></span>
 
-          {/* text */}
-          <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-            View Details
-          </span>
-        </button>
+            {/* text */}
+            <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+              View Details
+            </span>
+          </button>
+        </Link>
       </div>
     </div>
   );
