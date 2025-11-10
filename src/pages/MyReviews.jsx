@@ -1,14 +1,15 @@
-import axios from "axios";
 import { use } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import MyReviewsTable from "./MyReviewsTable";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyReviews = () => {
   const { user } = use(AuthContext);
   const [myReviews, setMyReviews] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -21,8 +22,8 @@ const MyReviews = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(`http://localhost:3000/my-review/${id}`)
+        axiosSecure
+          .delete(`/my-review/${id}`)
           .then(() => {
             Swal.fire({
               title: "Deleted!",
@@ -39,15 +40,15 @@ const MyReviews = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/my-review?email=${user?.email}`)
+    axiosSecure
+      .get(`/my-review?email=${user?.email}`)
       .then((res) => {
-        setMyReviews(res.data);
+        setMyReviews(res?.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [user]);
+  }, [user, axiosSecure]);
 
   //   console.log(myReviews);
   return (
