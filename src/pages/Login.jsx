@@ -1,12 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { use } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
-  const { createUser, loginWithGoogle } = use(AuthContext);
+  const { loginUser, loginWithGoogle } = use(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     register,
@@ -20,9 +21,9 @@ const Login = () => {
       // console.log("Form Data:", data);
       const email = data.email;
       const password = data.password;
-      createUser(email, password)
-        .then((res) => {
-          console.log(res.user);
+      loginUser(email, password)
+        .then(() => {
+          navigate(`${location?.state ? location?.state : "/"}`);
         })
         .catch((error) => {
           console.log(error);

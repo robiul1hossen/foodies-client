@@ -18,7 +18,7 @@ const AddReview = () => {
     data.createAt = date;
     // console.log("Submitted Review:", data);
     axios
-      .post(`http://localhost:3000/add-review`, data)
+      .post(`http://localhost:3000/all-reviews`, data)
       .then((res) => {
         console.log(res);
         alert("review added");

@@ -149,7 +149,7 @@ const Register = () => {
 
             {/* text */}
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-              Login
+              Sing Up
             </span>
           </button>
         </form>
