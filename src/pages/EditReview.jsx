@@ -2,15 +2,16 @@ import React from "react";
 import { use } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
-import axios from "axios";
 import { useParams } from "react-router";
 import { useEffect } from "react";
 import { useState } from "react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const EditReview = () => {
   const { id } = useParams();
   const { user } = use(AuthContext);
   const [review, setReview] = useState({});
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -21,11 +22,9 @@ const EditReview = () => {
   const onSubmit = (data) => {
     const date = Date.now();
     data.createAt = date;
-    // console.log("Submitted Review:", data);
-    axios
-      .patch(`http://localhost:3000/my-review/${id}`, data)
-      .then((res) => {
-        console.log(res);
+    axiosSecure
+      .patch(`/my-review/${id}`, data)
+      .then(() => {
         alert("review updated");
       })
       .catch((error) => {
@@ -34,16 +33,15 @@ const EditReview = () => {
     reset();
   };
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/my-review/${id}`)
+    axiosSecure
+      .get(`/my-review/${id}`)
       .then((res) => {
         setReview(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [id]);
-  //   console.log(review);
+  }, [id, axiosSecure]);
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-10">

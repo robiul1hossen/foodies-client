@@ -18,7 +18,6 @@ const Login = () => {
   // submit handler
   const onSubmit = async (data) => {
     try {
-      // console.log("Form Data:", data);
       const email = data.email;
       const password = data.password;
       loginUser(email, password)

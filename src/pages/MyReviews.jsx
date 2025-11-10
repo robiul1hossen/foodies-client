@@ -50,7 +50,6 @@ const MyReviews = () => {
       });
   }, [user, axiosSecure]);
 
-  //   console.log(myReviews);
   return (
     <div>
       <MyReviewsTable reviews={myReviews} handleDelete={handleDelete} />

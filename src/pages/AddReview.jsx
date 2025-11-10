@@ -2,10 +2,11 @@ import React from "react";
 import { use } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AddReview = () => {
   const { user } = use(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -16,11 +17,9 @@ const AddReview = () => {
   const onSubmit = (data) => {
     const date = Date.now();
     data.createAt = date;
-    // console.log("Submitted Review:", data);
-    axios
-      .post(`http://localhost:3000/all-reviews`, data)
-      .then((res) => {
-        console.log(res);
+    axiosSecure
+      .post(`/all-reviews`, data)
+      .then(() => {
         alert("review added");
       })
       .catch((error) => {

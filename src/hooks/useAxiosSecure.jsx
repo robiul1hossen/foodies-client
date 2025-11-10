@@ -20,14 +20,13 @@ const useAxiosSecure = () => {
       }
     );
 
-    axiosInstance.interceptors.response.use(
+    const responseInterceptor = axiosInstance.interceptors.response.use(
       (res) => {
         return res;
       },
       (error) => {
         const status = error.status;
         if (status === 401 || status === 403) {
-          console.log("logout the user, bad request");
           logoutUser()
             .then(() => {
               navigate("/login");
@@ -41,6 +40,7 @@ const useAxiosSecure = () => {
 
     return () => {
       axiosInstance.interceptors.request.eject(requestInterceptor);
+      axiosInstance.interceptors.response.eject(responseInterceptor);
     };
   }, [user, logoutUser, navigate]);
   return axiosInstance;

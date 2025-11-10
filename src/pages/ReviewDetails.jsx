@@ -1,25 +1,23 @@
-import axios from "axios";
-import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useParams } from "react-router";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ReviewDetails = () => {
   const { id } = useParams();
   const [details, setDetails] = useState({});
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/review-derails/${id}`)
+    axiosSecure
+      .get(`/review-derails/${id}`)
       .then((res) => {
-        console.log(res.data);
         setDetails(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [id]);
-  console.log(details);
+  }, [id, axiosSecure]);
   return (
     <div className="max-w-5xl mx-auto p-6 md:p-12 bg-gray-50 min-h-screen">
       {/* Header */}

@@ -11,7 +11,7 @@ const Navbar = () => {
   const menuRef = useRef();
   const handleLogout = () => {
     logoutUser()
-      .then((res) => console.log(res))
+      .then(() => {})
       .catch((error) => console.log(error));
   };
 

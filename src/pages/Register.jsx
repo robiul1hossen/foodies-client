@@ -18,7 +18,6 @@ const Register = () => {
   // submit handler
   const onSubmit = async (data) => {
     try {
-      // console.log("Form Data:", data);
       const email = data.email;
       const password = data.password;
 
@@ -29,11 +28,9 @@ const Register = () => {
       };
 
       createUser(email, password)
-        .then((res) => {
-          console.log(res.user);
+        .then(() => {
           updateUser(updatedInfo)
-            .then((res) => {
-              console.log("user updated", res);
+            .then(() => {
             })
             .catch((error) => {
               console.log(error);
@@ -49,7 +46,7 @@ const Register = () => {
   };
   const handleGoogleLogin = () => {
     loginWithGoogle()
-      .then((res) => res.user)
+      .then(() => {})
       .catch((error) => console.log(error));
   };
 
