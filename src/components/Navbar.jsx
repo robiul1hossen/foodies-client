@@ -105,6 +105,11 @@ const Navbar = () => {
                     className="btn btn-sm btn-ghost justify-start text-left">
                     My Reviews
                   </Link>
+                  <Link
+                    to="favorite"
+                    className="btn btn-sm btn-ghost justify-start text-left">
+                    My Favorite
+                  </Link>
                   <button
                     className="btn btn-sm btn-ghost justify-start text-left text-red-500"
                     onClick={handleLogout}>

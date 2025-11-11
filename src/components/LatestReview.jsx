@@ -13,7 +13,6 @@ const LatestReview = () => {
     axiosInstance
       .get(`/latest-review`)
       .then((res) => {
-        console.log(res.data);
         setLatest(res.data);
       })
       .catch((error) => {

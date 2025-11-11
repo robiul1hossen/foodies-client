@@ -38,7 +38,6 @@ const ReviewDetails = () => {
         console.log(error);
       });
   }, [axiosSecure, details]);
-  console.log(related);
 
   if (loading) {
     return <Loader />;

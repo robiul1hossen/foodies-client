@@ -1,6 +1,15 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { use } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const ReviewCard = ({ review }) => {
+  const axiosInstance = useAxiosSecure();
+  const { user } = use(AuthContext);
+
   const {
     _id,
     photo,
@@ -10,6 +19,28 @@ const ReviewCard = ({ review }) => {
     reviewerName,
     rating,
   } = review;
+  const [favorite, setFavorite] = useState(false);
+  if (favorite) {
+    console.log(_id);
+  }
+
+  useEffect(() => {
+    if (favorite) {
+      const data = {
+        id: _id,
+        email: user.email,
+      };
+      axiosInstance
+        .post("/favorite", data)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [axiosInstance, _id, favorite, user]);
+
   return (
     <div
       data-aos="fade-up"
@@ -24,7 +55,18 @@ const ReviewCard = ({ review }) => {
       {/* Content */}
       <div className="p-4">
         {/* Food name */}
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">{foodName}</h2>
+        <div className="flex justify-between items-center">
+          <h2 className="text-lg font-semibold text-gray-800 mb-2">
+            {foodName}
+          </h2>
+          <span
+            onClick={() => {
+              setFavorite(true);
+            }}
+            className="cursor-pointer">
+            {favorite ? <FaHeart /> : <FaRegHeart />}
+          </span>
+        </div>
 
         {/* Restaurant info */}
         <p className="text-gray-600 text-sm">
