@@ -3,20 +3,29 @@ import { useState } from "react";
 import { useEffect } from "react";
 import ReviewCard from "./ReviewCard";
 import useAxios from "../hooks/useAxios";
+import Loader from "./Loader";
 
 const TopRatedReview = () => {
   const [topReview, setTopReview] = useState([]);
+  const [loading, setLoading] = useState(true);
   const axiosInstance = useAxios();
   useEffect(() => {
+    setLoading(true);
     axiosInstance
       .get(`/top-rated-reviews`)
       .then((res) => {
         setTopReview(res.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [axiosInstance]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div>
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">

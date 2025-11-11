@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
-
+import logo3 from "../assets/logo5.png";
 const Navbar = () => {
   const { logoutUser, user } = use(AuthContext);
   const [open, setOpen] = useState(false);
@@ -67,7 +67,14 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="ml-2 text-2xl font-bold">FOODIES</a>
+        <a className="ml-2 text-2xl font-bold">
+          <img
+            className="w-20 h-10"
+            // src="https://i.ibb.co.com/9khfg1qW/Gemini-Generated-Image-kh39uvkh39uvkh39-removebg-preview.png"
+            src={logo3}
+            alt=""
+          />
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>

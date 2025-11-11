@@ -5,10 +5,13 @@ import { AuthContext } from "../context/AuthContext";
 import MyReviewsTable from "./MyReviewsTable";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Loader from "../components/Loader";
 
 const MyReviews = () => {
   const { user } = use(AuthContext);
   const [myReviews, setMyReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const axiosSecure = useAxiosSecure();
 
   const handleDelete = (id) => {
@@ -40,15 +43,21 @@ const MyReviews = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     axiosSecure
       .get(`/my-review?email=${user?.email}`)
       .then((res) => {
         setMyReviews(res?.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [user, axiosSecure]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div>

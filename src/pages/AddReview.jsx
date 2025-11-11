@@ -15,6 +15,7 @@ const AddReview = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     const date = Date.now();
     data.createAt = date;
     axiosSecure
@@ -35,102 +36,145 @@ const AddReview = () => {
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Food Photo URL */}
-        <div>
-          <label className="block mb-1 font-medium">Food Photo URL</label>
-          <input
-            type="text"
-            {...register("photo", { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.photo && (
-            <p className="text-red-500 text-sm">Photo URL is required</p>
-          )}
+        <div className="flex gap-6 ">
+          {/* Food Photo URL */}
+          <div className="w-full">
+            <label className="block mb-1 font-medium">Food Photo URL</label>
+            <input
+              type="text"
+              {...register("photo", { required: true })}
+              className="input input-bordered w-full outline-none"
+            />
+            {errors.photo && (
+              <p className="text-red-500 text-sm">Photo URL is required</p>
+            )}
+          </div>
+          {/* Food Name */}
+          <div className="w-full">
+            <label className="block mb-1 font-medium">Food Name</label>
+            <input
+              type="text"
+              {...register("foodName", { required: true })}
+              className="input input-bordered w-full outline-none"
+            />
+            {errors.foodName && (
+              <p className="text-red-500 text-sm">Food name is required</p>
+            )}
+          </div>
         </div>
 
-        {/* Food Name */}
-        <div>
-          <label className="block mb-1 font-medium">Food Name</label>
-          <input
-            type="text"
-            {...register("foodName", { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.foodName && (
-            <p className="text-red-500 text-sm">Food name is required</p>
-          )}
+        <div className="flex gap-6 ">
+          {/* Restaurant Name */}
+          <div className="w-full">
+            <label className="block mb-1 font-medium">Restaurant Name</label>
+            <input
+              type="text"
+              {...register("restaurantName", { required: true })}
+              className="input input-bordered w-full"
+            />
+            {errors.restaurantName && (
+              <p className="text-red-500 text-sm">
+                Restaurant name is required
+              </p>
+            )}
+          </div>
+          {/* Restaurant Location */}
+          <div className="w-full">
+            <label className="block mb-1 font-medium">
+              Restaurant Location
+            </label>
+            <input
+              type="text"
+              {...register("restaurantLocation", { required: true })}
+              className="input input-bordered w-full"
+            />
+            {errors.restaurantLocation && (
+              <p className="text-red-500 text-sm">Location is required</p>
+            )}
+          </div>
         </div>
 
-        {/* Restaurant Name */}
-        <div>
-          <label className="block mb-1 font-medium">Restaurant Name</label>
-          <input
-            type="text"
-            {...register("restaurantName", { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.restaurantName && (
-            <p className="text-red-500 text-sm">Restaurant name is required</p>
-          )}
+        <div className="flex gap-6">
+          {/* Reviewer Name */}
+          <div className="w-full">
+            <label className="block mb-1 font-medium">Reviewer Name</label>
+            <input
+              defaultValue={user.displayName}
+              readOnly
+              type="text"
+              {...register("reviewerName", { required: true })}
+              className="input input-bordered w-full outline-none"
+            />
+            {errors.reviewerName && (
+              <p className="text-red-500 text-sm">Reviewer name is required</p>
+            )}
+          </div>
+          {/* Reviewer Email */}
+          <div className="w-full">
+            <label className="block mb-1 font-medium">Reviewer Email</label>
+            <input
+              defaultValue={user.email}
+              readOnly
+              type="email"
+              {...register("reviewerEmail", { required: true })}
+              className="input input-bordered w-full outline-none"
+            />
+            {errors.reviewerEmail && (
+              <p className="text-red-500 text-sm">Reviewer name is required</p>
+            )}
+          </div>
         </div>
 
-        {/* Restaurant Location */}
-        <div>
-          <label className="block mb-1 font-medium">Restaurant Location</label>
-          <input
-            type="text"
-            {...register("restaurantLocation", { required: true })}
-            className="input input-bordered w-full"
-          />
-          {errors.restaurantLocation && (
-            <p className="text-red-500 text-sm">Location is required</p>
-          )}
-        </div>
+        <div className="flex gap-6 ">
+          {/* Reviewer Phone */}
+          <div className="w-full">
+            <label className="block mb-1 font-medium">
+              Reviewer Mobile No.
+            </label>
+            <input
+              type="text"
+              {...register("reviewerMobile", { required: true })}
+              className="input input-bordered w-full outline-none"
+            />
+            {errors.reviewerMobile && (
+              <p className="text-red-500 text-sm">
+                Reviewer Mobile No. is required
+              </p>
+            )}
+          </div>
 
-        {/* Reviewer Name */}
-        <div>
-          <label className="block mb-1 font-medium">Reviewer Name</label>
-          <input
-            defaultValue={user.displayName}
-            readOnly
-            type="text"
-            {...register("reviewerName", { required: true })}
-            className="input input-bordered w-full outline-none"
-          />
-          {errors.reviewerName && (
-            <p className="text-red-500 text-sm">Reviewer name is required</p>
-          )}
+          {/* Rating */}
+          <div className="w-full">
+            <label className="block mb-1 font-medium">Rating (0 - 5)</label>
+            <input
+              type="number"
+              step="0.1"
+              min="0"
+              max="5"
+              {...register("rating", { required: true, min: 0, max: 5 })}
+              className="input input-bordered w-full"
+            />
+            {errors.rating && (
+              <p className="text-red-500 text-sm">Enter a rating between 0–5</p>
+            )}
+          </div>
         </div>
-
-        {/* Reviewer Email */}
-        <div>
-          <label className="block mb-1 font-medium">Reviewer Email</label>
-          <input
-            defaultValue={user.email}
-            readOnly
-            type="email"
-            {...register("reviewerEmail", { required: true })}
-            className="input input-bordered w-full outline-none"
-          />
-          {errors.reviewerEmail && (
-            <p className="text-red-500 text-sm">Reviewer name is required</p>
-          )}
-        </div>
-
-        {/* Rating */}
-        <div>
-          <label className="block mb-1 font-medium">Rating (0 - 5)</label>
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            max="5"
-            {...register("rating", { required: true, min: 0, max: 5 })}
-            className="input input-bordered w-full"
-          />
-          {errors.rating && (
-            <p className="text-red-500 text-sm">Enter a rating between 0–5</p>
-          )}
+        <div className="flex gap-6">
+          <div className="w-full"></div>
+          {/* Visited Date */}
+          <div className="w-full">
+            <label className="block mb-1 font-medium">Visited Date</label>
+            <input
+              type="date"
+              {...register("visitDate", { required: true })}
+              className="input input-bordered w-full"
+            />
+            {errors.visitDate && (
+              <p className="text-red-500 text-sm">
+                Please select the date you visited
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Review */}
