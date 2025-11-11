@@ -5,6 +5,7 @@ import { use } from "react";
 import { AuthContext } from "../context/AuthContext";
 import MyReviewsTable from "./MyReviewsTable";
 import Swal from "sweetalert2";
+import Title from "../components/Title";
 
 const Favorite = () => {
   const { user } = use(AuthContext);
@@ -53,6 +54,15 @@ const Favorite = () => {
   console.log(favorites);
   return (
     <div>
+      <div className="-my-10">
+        <Title
+          text1={"My"}
+          text2={"Reviews"}
+          text3={
+            "My reviews here. You can easily find the best local food from here."
+          }
+        />
+      </div>
       <MyReviewsTable reviews={favorites} handleDelete={handleDelete} />
     </div>
   );

@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 const BannerSlider = () => {
   return (
     <Marquee speed={100} pauseOnHover="true">
-      <div className="flex justify-between gap-5">
+      <div className="flex justify-between gap-5 ">
         {/* 1st image */}
         <div className="relative w-full h-[350px] overflow-hidden rounded-lg">
           <img

@@ -6,6 +6,7 @@ import MyReviewsTable from "./MyReviewsTable";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Loader from "../components/Loader";
+import Title from "../components/Title";
 
 const MyReviews = () => {
   const { user } = use(AuthContext);
@@ -61,6 +62,15 @@ const MyReviews = () => {
 
   return (
     <div>
+      <div className="-my-10">
+        <Title
+          text1={"My"}
+          text2={"Reviews"}
+          text3={
+            "My reviews here. You can easily find the best local food from here."
+          }
+        />
+      </div>
       <MyReviewsTable reviews={myReviews} handleDelete={handleDelete} />
     </div>
   );

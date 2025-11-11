@@ -6,10 +6,6 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 const MyReviewsTable = ({ reviews, handleDelete }) => {
   return (
     <div className="p-4 md:p-8">
-      <h2 className="text-2xl font-semibold text-center mb-6">
-        My Reviews ({reviews?.length || 0})
-      </h2>
-
       {reviews && reviews.length > 0 ? (
         <div className="overflow-x-auto bg-white shadow-md rounded-lg">
           <Table className="w-full">
