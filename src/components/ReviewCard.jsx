@@ -44,7 +44,7 @@ const ReviewCard = ({ review }) => {
   return (
     <div
       data-aos="fade-up"
-      className="max-w-sm bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+      className="max-w-sm bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden mr-2">
       {/* Food Image */}
       <img
         src={photo}

@@ -3,6 +3,7 @@ import { use } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Title from "../components/Title";
 
 const AddReview = () => {
   const { user } = use(AuthContext);
@@ -31,12 +32,12 @@ const AddReview = () => {
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-10">
-      <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-        Add a Review
-      </h2>
+      <div className="md:-mt-32">
+        <Title text1={"Add"} text2={"Reviews"} text3={""} />
+      </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div className="flex gap-6 ">
+        <div className="flex flex-col md:flex-row md:gap-6 ">
           {/* Food Photo URL */}
           <div className="w-full">
             <label className="block mb-1 font-medium">Food Photo URL</label>
@@ -63,7 +64,7 @@ const AddReview = () => {
           </div>
         </div>
 
-        <div className="flex gap-6 ">
+        <div className="flex flex-col md:flex-row md:gap-6 ">
           {/* Restaurant Name */}
           <div className="w-full">
             <label className="block mb-1 font-medium">Restaurant Name</label>
@@ -94,7 +95,7 @@ const AddReview = () => {
           </div>
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex flex-col md:flex-row md:gap-6">
           {/* Reviewer Name */}
           <div className="w-full">
             <label className="block mb-1 font-medium">Reviewer Name</label>
@@ -125,7 +126,7 @@ const AddReview = () => {
           </div>
         </div>
 
-        <div className="flex gap-6 ">
+        <div className="flex flex-col md:flex-row md:gap-6 ">
           {/* Reviewer Phone */}
           <div className="w-full">
             <label className="block mb-1 font-medium">
@@ -159,7 +160,7 @@ const AddReview = () => {
             )}
           </div>
         </div>
-        <div className="flex gap-6">
+        <div className="flex flex-col md:flex-row md:gap-6">
           <div className="w-full"></div>
           {/* Visited Date */}
           <div className="w-full">

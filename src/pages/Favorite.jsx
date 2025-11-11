@@ -57,9 +57,9 @@ const Favorite = () => {
       <div className="-my-10">
         <Title
           text1={"My"}
-          text2={"Reviews"}
+          text2={"Favorites"}
           text3={
-            "My reviews here. You can easily find the best local food from here."
+            "My favorite reviews here. You can easily find the best local food from here."
           }
         />
       </div>

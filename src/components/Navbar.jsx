@@ -27,16 +27,16 @@ const Navbar = () => {
 
   const links = (
     <>
-      <NavLink className="font-semibold ml-6" to="/">
+      <NavLink className="font-semibold " to="/">
         Home
       </NavLink>
-      <NavLink className="font-semibold ml-6" to="/all-reviews">
+      <NavLink className="font-semibold md:ml-6" to="/all-reviews">
         All Review
       </NavLink>
-      <NavLink className="font-semibold ml-6" to="/add-review">
+      <NavLink className="font-semibold md:ml-6" to="/add-review">
         Add Review
       </NavLink>
-      <NavLink className="font-semibold ml-6" to="/my-reviews">
+      <NavLink className="font-semibold md:ml-6" to="/my-reviews">
         My Review
       </NavLink>
     </>
@@ -118,9 +118,6 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            <button onClick={handleLogout} className="btn">
-              Logout
-            </button>
           </>
         ) : (
           <Link to="/login" className="btn">

@@ -30,16 +30,16 @@ const AllReviews = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="-mt-10">
+      <div className="md:-mt-10 mt-10">
         <Title
           text1={"All"}
-          text2={"Reviews Here"}
+          text2={"Reviews"}
           text3={
             "Our all review here. You can easily find the best local food from here."
           }
         />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {topReview.map((review) => (
           <ReviewCard key={review._id} review={review} />
         ))}
