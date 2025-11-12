@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Title from "../components/Title";
+import Swal from "sweetalert2";
 
 const AddReview = () => {
   const { user } = use(AuthContext);
@@ -17,12 +18,17 @@ const AddReview = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    data.rating = Number(data.rating);
     const date = Date.now();
     data.createAt = date;
     axiosSecure
       .post(`/all-reviews`, data)
       .then(() => {
-        alert("review added");
+        Swal.fire({
+          title: "Review Added!",
+          text: `${data.foodName}'s reviews added`,
+          icon: "success",
+        });
       })
       .catch((error) => {
         console.log(error);

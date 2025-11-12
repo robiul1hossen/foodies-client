@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router";
 import { use } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { loginUser, loginWithGoogle } = use(AuthContext);
@@ -25,7 +26,7 @@ const Login = () => {
           navigate(`${location?.state ? location?.state : "/"}`);
         })
         .catch((error) => {
-          console.log(error);
+          toast.error(error.message);
         });
     } catch (error) {
       console.error("Registration failed:", error);

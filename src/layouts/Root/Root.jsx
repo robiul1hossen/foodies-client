@@ -4,6 +4,7 @@ import { Outlet } from "react-router";
 import Footer from "../../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ToastContainer } from "react-toastify";
 
 const Root = () => {
   AOS.init();
@@ -14,6 +15,7 @@ const Root = () => {
         <Outlet />
         <Footer />
       </div>
+      <ToastContainer />
     </div>
   );
 };

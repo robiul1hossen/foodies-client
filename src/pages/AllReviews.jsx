@@ -16,7 +16,7 @@ const AllReviews = () => {
   const axiosInstance = useAxios();
 
   const fetchReviews = useCallback(
-    async (search) => {
+    async (search = "") => {
       try {
         setLoading(true);
         const res = await axiosInstance.get(`/search-reviews?search=${search}`);

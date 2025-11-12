@@ -10,13 +10,13 @@ const Footer = () => {
               <div className="mb-10 w-full">
                 <a href="/#" className="mb-6 inline-block max-w-40">
                   <img
-                    src="https://cdn.tailgrids.com/assets/images/logo/logo.svg"
-                    alt="logo"
+                    src=""
+                    alt="Foodies"
                     className="max-w-full dark:hidden"
                   />
                   <img
-                    src="https://cdn.tailgrids.com/assets/images/logo/logo-white.svg"
-                    alt="logo"
+                    src="h"
+                    alt="Foodies"
                     className="max-w-full hidden dark:block"
                   />
                 </a>
@@ -65,7 +65,7 @@ const Footer = () => {
               <NavLink link="/#" label="User Strategy" />
             </LinkGroup>
             <LinkGroup header="Company">
-              <NavLink link="/#" label="About TailGrids" />
+              <NavLink link="/#" label="About Foodies" />
               <NavLink link="/#" label="Contact & Support" />
               <NavLink link="/#" label="Success History" />
               <NavLink link="/#" label="Setting & Privacy" />
@@ -129,7 +129,7 @@ const Footer = () => {
                   </a>
                 </div>
                 <p className="text-base text-body-color dark:text-dark-6">
-                  &copy; 2025 TailGrids
+                  &copy; 2025 Foodies
                 </p>
               </div>
             </div>

@@ -36,9 +36,6 @@ const Navbar = () => {
       <NavLink className="font-semibold md:ml-6" to="/add-review">
         Add Review
       </NavLink>
-      <NavLink className="font-semibold md:ml-6" to="/my-reviews">
-        My Review
-      </NavLink>
     </>
   );
   return (
