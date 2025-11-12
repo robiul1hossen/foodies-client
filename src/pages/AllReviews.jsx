@@ -6,23 +6,39 @@ import ReviewCard from "../components/ReviewCard";
 import useAxios from "../hooks/useAxios";
 import Loader from "../components/Loader";
 import Title from "../components/Title";
+import { FaSearch } from "react-icons/fa";
+import { useCallback } from "react";
 
 const AllReviews = () => {
-  const [topReview, setTopReview] = useState([]);
+  const [allReview, setAllReview] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchText, setSearchText] = useState("");
   const axiosInstance = useAxios();
-  useEffect(() => {
-    setLoading(true);
-    axiosInstance
-      .get(`/all-reviews`)
-      .then((res) => {
-        setTopReview(res.data);
+
+  const fetchReviews = useCallback(
+    async (search) => {
+      try {
+        setLoading(true);
+        const res = await axiosInstance.get(`/search-reviews?search=${search}`);
+        setAllReview(res.data);
+        console.log(res.data);
+      } catch (error) {
+        console.error(error);
+      } finally {
         setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [axiosInstance]);
+      }
+    },
+    [axiosInstance]
+  );
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    fetchReviews(searchText);
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, [fetchReviews]);
 
   if (loading) {
     return <Loader />;
@@ -39,8 +55,25 @@ const AllReviews = () => {
           }
         />
       </div>
+      <div className="text-center w-full mx-auto ">
+        <form
+          onSubmit={handleSearch}
+          className="flex items-center justify-center">
+          <input
+            name="search"
+            type="search"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            className="border-none outline px-3 py-2 w-1/4 shadow-lg mb-10 rounded-l-xl  "
+            placeholder="Search Review"
+          />
+          <button className="border border-black px-3 py-3  shadow-lg mb-10 rounded-r-xl bg-amber-400 text-white">
+            <FaSearch />
+          </button>
+        </form>
+      </div>
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {topReview.map((review) => (
+        {allReview.map((review) => (
           <ReviewCard key={review._id} review={review} />
         ))}
       </div>

@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { use } from "react";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const ReviewCard = ({ review }) => {
   const axiosInstance = useAxiosSecure();
@@ -20,9 +21,6 @@ const ReviewCard = ({ review }) => {
     rating,
   } = review;
   const [favorite, setFavorite] = useState(false);
-  if (favorite) {
-    console.log(_id);
-  }
 
   useEffect(() => {
     if (favorite) {
@@ -30,21 +28,29 @@ const ReviewCard = ({ review }) => {
         id: _id,
         email: user.email,
       };
+      console.log(data);
       axiosInstance
         .post("/favorite", data)
         .then((res) => {
           console.log(res.data);
+          if (res.data.insertedId) {
+            Swal.fire({
+              title: "Review Added!",
+              text: `${foodName} added to your favorite`,
+              icon: "success",
+            });
+          }
         })
         .catch((error) => {
           console.log(error);
         });
     }
-  }, [axiosInstance, _id, favorite, user]);
+  }, [axiosInstance, _id, favorite, user, foodName]);
 
   return (
     <div
       data-aos="fade-up"
-      className="max-w-sm bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden mr-2">
+      className=" px-5 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden mr-2">
       {/* Food Image */}
       <img
         src={photo}

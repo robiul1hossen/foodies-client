@@ -24,7 +24,7 @@ const Favorite = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosInstance
-          .delete(`/my-review/${id}`)
+          .delete(`/favorite/${id}`)
           .then(() => {
             Swal.fire({
               title: "Deleted!",
@@ -51,7 +51,6 @@ const Favorite = () => {
         console.log(error);
       });
   }, [axiosInstance, user]);
-  console.log(favorites);
   return (
     <div>
       <div className="-my-10">

@@ -5,6 +5,8 @@ import ReviewCard from "./ReviewCard";
 import useAxios from "../hooks/useAxios";
 import Loader from "./Loader";
 import Title from "./Title";
+import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router";
 
 const TopRatedReview = () => {
   const [topReview, setTopReview] = useState([]);
@@ -40,6 +42,14 @@ const TopRatedReview = () => {
         {topReview.map((review) => (
           <ReviewCard key={review._id} review={review} />
         ))}
+      </div>
+      <div className="mt-4 w-full justify-items-center  ">
+        <Link
+          to="/all-reviews"
+          className="cursor-pointer flex justify-center items-center  border w-fit px-6 py-2 rounded-xl bg-transparent hover:bg-black hover:text-white duration-300">
+          <p>View All</p>
+          <FaArrowRight />
+        </Link>
       </div>
     </div>
   );

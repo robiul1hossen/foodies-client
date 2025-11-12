@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Loader from "../components/Loader";
 import ReviewCard from "../components/ReviewCard";
+import Title from "../components/Title";
 
 const ReviewDetails = () => {
   const { id } = useParams();
@@ -54,7 +55,7 @@ const ReviewDetails = () => {
             <img
               src={details.photo}
               alt={details.foodName}
-              className="w-full h-full object-cover max-h-[450px]"
+              className=" h-full object-cover max-h-[450px] w-full"
             />
 
             {/*  */}
@@ -111,6 +112,13 @@ const ReviewDetails = () => {
           </div>
         </div>
       </div>
+      <Title
+        text1={"Related"}
+        text2={"Reviews"}
+        text3={
+          "Related to your search. You can easily find the best local food from here."
+        }
+      />
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
         {related.map((review) => (
           <ReviewCard key={review._id} review={review} />
