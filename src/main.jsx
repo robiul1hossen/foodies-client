@@ -16,6 +16,7 @@ import EditReview from "./pages/EditReview.jsx";
 import PrivateRoute from "./layouts/PrivateRoute/PrivateRoute.jsx";
 import Favorite from "./pages/Favorite.jsx";
 import Profile from "./pages/Profile.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+  {
+    path: "/*",
+    Component: ErrorPage,
   },
 ]);
 

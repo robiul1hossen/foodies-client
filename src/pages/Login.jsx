@@ -4,9 +4,12 @@ import { useLocation, useNavigate } from "react-router";
 import { use } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 
 const Login = () => {
   const { loginUser, loginWithGoogle } = use(AuthContext);
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -34,7 +37,9 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     loginWithGoogle()
-      .then((res) => res.user)
+      .then(() => {
+        navigate(`${location?.state ? location?.state : "/"}`);
+      })
       .catch((error) => console.log(error));
   };
 
@@ -70,12 +75,12 @@ const Login = () => {
             )}
           </div>
           {/* Password */}
-          <div>
+          <div className="relative">
             <label className="block mb-1 font-medium text-gray-700">
               Password
             </label>
             <input
-              type="password"
+              type={`${show ? "text" : "password"}`}
               placeholder="Enter your password"
               {...register("password", {
                 required: "Password is required",
@@ -83,9 +88,21 @@ const Login = () => {
                   value: 6,
                   message: "Password must be at least 6 characters",
                 },
+                pattern: {
+                  value: /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
+                  message:
+                    "Password must contain at least one uppercase and one lowercase letter",
+                },
               })}
               className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+            <span
+              onClick={() => {
+                setShow(!show);
+              }}
+              className="absolute top-10 right-2.5">
+              {show ? <FaRegEye /> : <FaEyeSlash />}
+            </span>
             {errors.password && (
               <p className="text-red-500 text-sm mt-1">
                 {errors.password.message}

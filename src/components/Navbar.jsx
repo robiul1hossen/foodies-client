@@ -36,13 +36,17 @@ const Navbar = () => {
 
   const links = (
     <>
-      <NavLink className="font-semibold " to="/">
+      <NavLink className="font-semibold  flex flex-col gap-4" to="/">
         Home
       </NavLink>
-      <NavLink className="font-semibold md:ml-6" to="/all-reviews">
+      <NavLink
+        className="font-semibold flex flex-col gap-4 mt-4 md:mt-0 md:ml-6"
+        to="/all-reviews">
         All Review
       </NavLink>
-      <NavLink className="font-semibold md:ml-6" to="/add-review">
+      <NavLink
+        className="font-semibold flex flex-col gap-4 mt-4 md:mt-0 md:ml-6"
+        to="/add-review">
         Add Review
       </NavLink>
     </>
@@ -70,7 +74,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content  rounded-box mt-3 w-52 p-2 shadow  z-10">
+              className="menu menu-sm dropdown-content bg-white border text-black rounded-box mt-3 w-52 p-2 shadow  z-10">
               {links}
             </ul>
           </div>
@@ -95,9 +99,8 @@ const Navbar = () => {
                   onClick={() => setOpen(!open)}
                 />
 
-                {/* Dropdown Menu */}
                 {open && (
-                  <div className="absolute right-0 mt-2 shadow-lg rounded-lg border w-48 flex flex-col p-2 z-50 animate-fadeIn">
+                  <div className="absolute bg-white text-black right-0 mt-2 shadow-lg rounded-lg border w-48 flex flex-col p-2 z-50 animate-fadeIn">
                     <Link
                       to="/add-review"
                       className="btn btn-sm btn-ghost justify-start text-left">

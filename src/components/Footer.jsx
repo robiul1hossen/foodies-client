@@ -17,10 +17,10 @@ const Footer = () => {
                     alt="Foodies"
                     className="max-w-full dark:hidden"
                   />
-                  <Link to="/" className="ml-2 flex gap-1 items-center">
+                  <div className="ml-2 flex gap-1 items-center">
                     <img className="w-12 h-12" src={logo} alt="" />
                     <span className="font-bold text-2xl">FOODIES</span>
-                  </Link>
+                  </div>
                 </a>
                 <p className="mb-7 text-base text-body-color dark:text-dark-6">
                   Sed ut perspiciatis undmnis is iste natus error sit amet
