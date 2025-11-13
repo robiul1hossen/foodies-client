@@ -16,7 +16,6 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  // submit handler
   const onSubmit = async (data) => {
     try {
       const email = data.email;
@@ -30,7 +29,6 @@ const Login = () => {
         });
     } catch (error) {
       console.error("Registration failed:", error);
-      // alert("Something went wrong!");
     }
   };
 

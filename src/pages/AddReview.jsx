@@ -17,7 +17,6 @@ const AddReview = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     data.rating = Number(data.rating);
     const date = Date.now();
     data.createAt = date;

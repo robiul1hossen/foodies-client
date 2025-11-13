@@ -1,4 +1,3 @@
-// import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -21,7 +20,6 @@ const AllReviews = () => {
         setLoading(true);
         const res = await axiosInstance.get(`/search-reviews?search=${search}`);
         setAllReview(res.data);
-        console.log(res.data);
       } catch (error) {
         console.error(error);
       } finally {
@@ -58,13 +56,13 @@ const AllReviews = () => {
       <div className="text-center w-full mx-auto ">
         <form
           onSubmit={handleSearch}
-          className="flex items-center justify-center">
+          className="flex items-center justify-center px-4">
           <input
             name="search"
             type="search"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className="border-none outline px-3 py-2 w-1/4 shadow-lg mb-10 rounded-l-xl  "
+            className="border-none outline px-3 py-2  w-full md:w-1/4 shadow-lg mb-10 rounded-l-xl  "
             placeholder="Search Review"
           />
           <button className="border border-black px-3 py-3  shadow-lg mb-10 rounded-r-xl bg-amber-400 text-white">

@@ -27,12 +27,10 @@ const ReviewDetails = () => {
       });
   }, [id, axiosSecure]);
 
-  // console.log(details?.category);
   useEffect(() => {
     axiosSecure
       .get(`/related-category?category=${details?.category}`)
       .then((res) => {
-        console.log(res.data);
         setRelated(res.data);
       })
       .catch((error) => {
@@ -119,7 +117,7 @@ const ReviewDetails = () => {
           "Related to your search. You can easily find the best local food from here."
         }
       />
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
         {related.map((review) => (
           <ReviewCard key={review._id} review={review} />
         ))}

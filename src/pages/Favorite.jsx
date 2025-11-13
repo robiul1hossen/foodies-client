@@ -44,7 +44,6 @@ const Favorite = () => {
     axiosInstance
       .get(`/favorite/${user.email}`)
       .then((res) => {
-        console.log(res.data);
         setFavorites(res.data);
       })
       .catch((error) => {
