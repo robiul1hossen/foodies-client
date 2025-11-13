@@ -45,23 +45,19 @@ const ReviewDetails = () => {
   return (
     <>
       <div className="max-w-5xl mx-auto p-6 md:p-12 bg-gray-50 min-h-screen">
-        {/* Header */}
-        {/* Main content */}
         <div className="flex flex-col md:flex-row gap-8 items-start ">
-          {/* Food Image */}
-          <div className="flex-1 rounded-lg overflow-hidden shadow-lg h-[450px]">
+          <div
+            data-aos="fade-right"
+            className="flex-1 rounded-lg overflow-hidden shadow-lg h-[450px]">
             <img
               src={details.photo}
               alt={details.foodName}
               className=" h-full object-cover max-h-[450px] w-full"
             />
-
-            {/*  */}
           </div>
-
-          {/* Review content */}
-          <div className="flex-1 bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 h-[450px] ">
-            {/*  */}
+          <div
+            data-aos="fade-left"
+            className="flex-1 bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 h-[450px] ">
             <div className="text-center mb-10">
               <h1 className="text-4xl font-bold text-gray-800">
                 {details.foodName}
@@ -86,7 +82,6 @@ const ReviewDetails = () => {
                 </div>
               </div>
             </div>
-            {/*  */}
 
             <h2 className="text-xl font-semibold text-gray-800">
               Reviewed by {details.reviewerName}

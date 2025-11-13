@@ -72,7 +72,7 @@ const BannerSwiper = () => {
           className="mySwiper">
           {reviews.map((review, index) => (
             <SwiperSlide key={index}>
-              <div className="flex flex-col md:flex-row items-center  rounded-2xl shadow-md p-8 md:p-10 gap-8">
+              <div className="flex bg-white flex-col md:flex-row items-center  rounded-2xl shadow-md p-8 md:p-10 gap-8">
                 <div className="w-full">
                   <img
                     src={review.image}

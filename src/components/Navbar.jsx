@@ -4,16 +4,25 @@ import { AuthContext } from "../context/AuthContext";
 import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
-import logo3 from "../assets/logo5.png";
+import logo3 from "../assets/logo.png";
+import { FaMoon, FaRegMoon } from "react-icons/fa";
 const Navbar = () => {
   const { logoutUser, user } = use(AuthContext);
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const menuRef = useRef();
   const handleLogout = () => {
     logoutUser()
       .then(() => {})
       .catch((error) => console.log(error));
   };
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -61,13 +70,14 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content  rounded-box mt-3 w-52 p-2 shadow bg-white z-10">
+              className="menu menu-sm dropdown-content  rounded-box mt-3 w-52 p-2 shadow  z-10">
               {links}
             </ul>
           </div>
-          <a className="ml-2 text-2xl font-bold">
-            <img className="w-20 h-10" src={logo3} alt="" />
-          </a>
+          <Link to="/" className="ml-2 flex gap-1 items-center">
+            <img className="w-12 h-12" src={logo3} alt="" />
+            <span className="font-bold text-2xl">FOODIES</span>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -87,7 +97,7 @@ const Navbar = () => {
 
                 {/* Dropdown Menu */}
                 {open && (
-                  <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg border w-48 flex flex-col p-2 z-50 animate-fadeIn">
+                  <div className="absolute right-0 mt-2 shadow-lg rounded-lg border w-48 flex flex-col p-2 z-50 animate-fadeIn">
                     <Link
                       to="/add-review"
                       className="btn btn-sm btn-ghost justify-start text-left">
@@ -123,6 +133,9 @@ const Navbar = () => {
             </Link>
           )}
         </div>
+        <button onClick={toggleTheme} className="ml-4 cursor-pointer">
+          {theme === "light" ? <FaRegMoon /> : <FaMoon />}
+        </button>
       </div>
     </div>
   );

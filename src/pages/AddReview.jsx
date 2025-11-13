@@ -36,7 +36,7 @@ const AddReview = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-10">
+    <div className="max-w-2xl mx-auto  shadow-lg rounded-lg p-8 mt-10">
       <div className="md:-mt-32">
         <Title text1={"Add"} text2={"Reviews"} text3={""} />
       </div>
@@ -166,7 +166,28 @@ const AddReview = () => {
           </div>
         </div>
         <div className="flex flex-col md:flex-row md:gap-6">
-          <div className="w-full"></div>
+          <div className="w-full">
+            {/* Food Category */}
+            <div className="w-full">
+              <label className="block mb-1 font-medium">Food Category</label>
+              <select
+                {...register("category", { required: true })}
+                className="select select-bordered w-full outline-none"
+                defaultValue="">
+                <option value="" disabled>
+                  Select Category
+                </option>
+                <option value="Fast Food">Fast Food</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Deshi Food">Deshi Food</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Italian">Italian</option>
+              </select>
+              {errors.category && (
+                <p className="text-red-500 text-sm">Category is required</p>
+              )}
+            </div>
+          </div>
           {/* Visited Date */}
           <div className="w-full">
             <label className="block mb-1 font-medium">Visited Date</label>

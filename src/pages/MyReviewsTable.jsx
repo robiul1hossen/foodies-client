@@ -7,9 +7,9 @@ const MyReviewsTable = ({ reviews, handleDelete }) => {
   return (
     <div className="p-4 md:p-8">
       {reviews && reviews.length > 0 ? (
-        <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+        <div className="overflow-x-auto shadow-md rounded-lg">
           <Table className="w-full">
-            <Thead className="bg-gray-100 text-gray-700">
+            <Thead className=" ">
               <Tr>
                 <Th className="p-3 text-left">Photo</Th>
                 <Th className="p-3 text-left">Food Name</Th>
@@ -20,9 +20,7 @@ const MyReviewsTable = ({ reviews, handleDelete }) => {
             </Thead>
             <Tbody>
               {reviews.map((review) => (
-                <Tr
-                  key={review._id}
-                  className="border-b hover:bg-gray-50 transition">
+                <Tr key={review._id} className="border-b hover: transition">
                   <Td className="p-3">
                     <img
                       src={review.photo}
@@ -33,11 +31,9 @@ const MyReviewsTable = ({ reviews, handleDelete }) => {
                   <Td className="p-3 font-medium">{review.foodName}</Td>
                   <Td className="p-3">
                     {review.restaurantName}
-                    <p className="text-sm text-gray-500">
-                      {review.restaurantLocation}
-                    </p>
+                    <p className="text-sm ">{review.restaurantLocation}</p>
                   </Td>
-                  <Td className="p-3 text-gray-600">
+                  <Td className="p-3 ">
                     {new Date(review.createAt).toLocaleDateString()}
                   </Td>
                   <Td className="p-3 flex gap-2 justify-center">
@@ -58,9 +54,7 @@ const MyReviewsTable = ({ reviews, handleDelete }) => {
           </Table>
         </div>
       ) : (
-        <p className="text-center text-gray-500 mt-8">
-          No reviews found for your account.
-        </p>
+        <p className="text-center  mt-8">No reviews found for your account.</p>
       )}
     </div>
   );

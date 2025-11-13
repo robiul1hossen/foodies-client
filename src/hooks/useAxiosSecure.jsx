@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 const axiosInstance = axios.create({
-  baseURL: "https://foodies-server-beryl.vercel.app",
+  baseURL: "http://localhost:3000",
 });
 
 const useAxiosSecure = () => {

@@ -13,39 +13,47 @@ const LogoSlider = () => {
   ];
 
   return (
-    <div className="bg-white py-6 shadow-md rounded-2xl overflow-hidden">
+    <div className=" py-6 shadow-md rounded-2xl overflow-hidden">
       <Title
         text1={"Our"}
         text2={"Partner Restaurants"}
         text3={"Trusted by top food brands across the country."}
       />
 
-      <Marquee pauseOnHover={true} gradient={false} speed={80} direction="left">
-        {logos.map((logo, index) => (
-          <div key={index} className="mx-8 flex items-center justify-center">
-            <img
-              src={logo}
-              alt={`logo-${index}`}
-              className="h-24 mb-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-            />
-          </div>
-        ))}
-      </Marquee>
-      <Marquee
-        pauseOnHover={true}
-        gradient={false}
-        speed={80}
-        direction="right">
-        {logos.map((logo, index) => (
-          <div key={index} className="mx-8 flex items-center justify-center">
-            <img
-              src={logo}
-              alt={`logo-${index}`}
-              className="h-24 w-auto mt-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
-            />
-          </div>
-        ))}
-      </Marquee>
+      <div className="bg-white py-4 rounded-xl">
+        <Marquee
+          pauseOnHover={true}
+          gradient={false}
+          speed={80}
+          direction="left">
+          {logos.map((logo, index) => (
+            <div key={index} className="mx-8 flex items-center justify-center">
+              <img
+                src={logo}
+                alt={`logo-${index}`}
+                className="h-24 mb-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
+          ))}
+        </Marquee>
+      </div>
+      <div className="bg-white py-4 rounded-xl">
+        <Marquee
+          pauseOnHover={true}
+          gradient={false}
+          speed={80}
+          direction="right">
+          {logos.map((logo, index) => (
+            <div key={index} className="mx-8 flex items-center justify-center">
+              <img
+                src={logo}
+                alt={`logo-${index}`}
+                className="h-24 w-auto mt-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
+          ))}
+        </Marquee>
+      </div>
     </div>
   );
 };

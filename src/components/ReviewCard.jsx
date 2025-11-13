@@ -49,7 +49,7 @@ const ReviewCard = ({ review }) => {
   return (
     <div
       data-aos="fade-up"
-      className="  px-5 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden mr-2">
+      className="px-5 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden mr-2">
       {/* Food Image */}
       <div>
         <img
@@ -60,9 +60,7 @@ const ReviewCard = ({ review }) => {
 
         <div className="p-4">
           <div className="flex justify-between items-center">
-            <h2 className="text-lg font-semibold text-gray-800 mb-2">
-              {foodName}
-            </h2>
+            <h2 className="text-lg font-semibold  mb-2">{foodName}</h2>
             <span
               onClick={() => {
                 setFavorite(true);
@@ -72,13 +70,13 @@ const ReviewCard = ({ review }) => {
             </span>
           </div>
 
-          <p className="text-gray-600 text-sm">
+          <p className=" text-sm">
             <span className="font-medium">{restaurantName}</span> —{" "}
             {restaurantLocation}
           </p>
 
           <div className="flex justify-between items-center mt-3">
-            <p className="text-gray-700 text-sm">
+            <p className=" text-sm">
               Reviewed by <span className="font-semibold">{reviewerName}</span>
             </p>
 
@@ -92,7 +90,7 @@ const ReviewCard = ({ review }) => {
               <span className="font-medium">{rating}</span>
             </div>
           </div>
-          <p className="text-gray-700 text-sm">
+          <p className=" text-sm">
             Category : <span className="font-semibold">{category}</span>
           </p>
 
