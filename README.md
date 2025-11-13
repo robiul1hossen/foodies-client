@@ -1,16 +1,23 @@
-# React + Vite
+# FOODIES - https://cosmic-tiramisu-4c7fda.netlify.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Local Food Lovers Network is a community-driven MERN application that connects food enthusiasts who enjoy exploring local restaurants, street food, and homemade dishes. Users can share their dining experiences, post reviews with photos, and discover popular foods nearby. The platform celebrates authentic flavors, honest opinions, and the vibrant local food culture.
 
-Currently, two official plugins are available:
+## The technology I've used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- react
+- react-dom
+- @tailwindcss/vite
+- aos
+- axios
+- firebase
+- rc-drawer
+- react-fast-marquee
+- react-hook-form
+- react-icons
+- react-loader-spinner
+- react-router
+- react-super-responsive-table
+- react-toastify
+- sweetalert2
+- swiper
+- tailwindcss
